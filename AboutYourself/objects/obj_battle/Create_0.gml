@@ -1,0 +1,1 @@
+scr_battlestart(obj_enemy1)
