@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/Objects.yy",
+    "path":"folders/Jessie/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -37,10 +37,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_love",
-    "path":"sprites/spr_love/spr_love.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
