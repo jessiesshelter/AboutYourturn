@@ -1,11 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_global",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_player",
+  "eventList":[],
   "managed":true,
-  "name":"obj_global",
+  "name":"obj_player",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -29,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_love",
-    "path":"sprites/spr_love/spr_love.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

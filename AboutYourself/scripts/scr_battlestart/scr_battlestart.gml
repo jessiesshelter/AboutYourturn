@@ -15,12 +15,12 @@ function scr_battlestart(amount,enemy1,enemy2,enemy3,background,music){
 	show_debug_message(enemy1)
 	}
 	
-	with (instance_create_layer(256,192,"Instances",obj_battle)) {
-	amount = other.amount;
-	enemy1 = other.enemy1;
-	enemy2 = other.enemy2;
-	enemy3 = other.enemy3;
-	}
+	//with (instance_create_layer(256,192,"Instances",obj_battle)) {
+	//amount = other.amount;
+	//enemy1 = other.enemy1;
+	//enemy2 = other.enemy2;
+	//enemy3 = other.enemy3;
+	//}
 	
 	
 }
