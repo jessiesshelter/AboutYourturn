@@ -1,5 +1,6 @@
 if target != noone{
 	for (var i = 0; i < optionsNum; ++i) {
+		
 		//Button
 		draw_set_colour(c_black);
 		draw_rectangle(
@@ -9,7 +10,11 @@ if target != noone{
 		);
 		
 		//Text
-		draw_set_colour(c_white);
-		draw_text(target.x + OFFSET_X, target.y + OFFSET_Y + B_GAP * i, options[i])
+			//Selection Color
+			if (ySelection == i){
+			draw_set_colour(c_red);
+			} else {	draw_set_colour(c_white);	};
+			
+		draw_text(target.x + OFFSET_X, target.y + OFFSET_Y + B_GAP * i, options[i]);
 	}
 }

@@ -21,15 +21,12 @@ turnTarget = noone;
 waitNext = state.enemyturn;
 checkNext = state.wait;
 
-//Party
+//Party (temp)
 for(var i = 0; i < instance_number(obj_player); i++){
 	global.PartyMembers[i] = instance_find(obj_player,i);
 }
 
 partyNumber = array_length(global.PartyMembers)
-
-//Keybindings
-confirmKey = vk_enter;
 
 //Positions
 allyX = room_width/3;

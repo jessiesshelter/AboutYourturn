@@ -23,7 +23,7 @@ switch(combatState){
 	#region Player's Turn
     case state.playerturn:  
         //TurnCicles
-		if keyboard_check_pressed(confirmKey){
+		if keyboard_check_pressed(global.keys.confirm){
 		    turnOwner = global.PartyMembers[turnCount];
 		    turnCount++;
 		//TurnReset
