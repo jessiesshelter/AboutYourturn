@@ -1,5 +1,11 @@
-if (obj_battle.combatState = state.playerturn) {
+if (obj_battle.combatState == state.playerturn) {
 	target = global.PartyMembers[obj_battle.turnCount];
 } else {
 	target = noone;
+}
+
+switch (selecion) {
+
+	case 
+
 }

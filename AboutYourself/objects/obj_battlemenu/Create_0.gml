@@ -1,8 +1,9 @@
 target = noone;
 locked = false;
 
-options = 4;
-option = ["Fight","Skills","Itens","Run"]
+options = ["Fight","Skills","Itens","Run"];
+optionsNum = array_length(options);
+selection = 0;
 
 #macro OFFSET_X 16
 #macro OFFSET_Y -64
