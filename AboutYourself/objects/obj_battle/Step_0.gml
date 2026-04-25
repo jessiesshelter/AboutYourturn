@@ -21,19 +21,18 @@ switch(combatState){
     break; #endregion
 
 	#region Player's Turn
-    case state.playerturn:  
-        //TurnCicles
-		if keyboard_check_pressed(global.keys.confirm){
-		    turnOwner = global.PartyMembers[turnCount];
-		    turnCount++;
+    case state.playerturn: 
+		
+		obj_battlemenu.target = global.PartyMembers[turnCount]; //BRO MY PC-C-C-C
+			
 		//TurnReset
 			if (turnCount >= partyNumber){
 	            turnCount = 0;
 	            combatState = state.check;
 				waitNext = state.enemyturn;
+				obj_battlemenu.target = noone;
 				alarm[0] = 60;
 			}
-		}
     break; #endregion
 
 	#region Check
@@ -70,10 +69,10 @@ switch(combatState){
     case state.enemyturn:  
 		
 		//TurnCicles (Enemy)
-		if keyboard_check_pressed(confirmKey){
-		    turnOwner = enemy[turnCount];
+		if keyboard_check_pressed(global.keys.confirm){
+		    var _turnOwner = enemy[turnCount];
 		    turnCount++;
-			Attack(turnOwner, global.PartyMembers[irandom_range(0, (partyNumber-1))])
+			Attack(_turnOwner, global.PartyMembers[irandom_range(0, (partyNumber-1))])
 		//TurnReset (Enemy)
 			if (turnCount >= eAmount){
 	            turnCount = 0;

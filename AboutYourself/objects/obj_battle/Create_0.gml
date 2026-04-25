@@ -15,7 +15,6 @@ combatState = state.init;
 enemy = [];
 eAmount = 2
 turnCount = 0;
-turnOwner = noone;
 turnTarget = noone;
 
 waitNext = state.enemyturn;

@@ -39,6 +39,7 @@
     {"id":{"name":"spr_hate","path":"sprites/spr_hate/spr_hate.yy",},},
     {"id":{"name":"spr_kris","path":"sprites/spr_kris/spr_kris.yy",},},
     {"id":{"name":"spr_omori","path":"sprites/spr_omori/spr_omori.yy",},},
+    {"id":{"name":"spr_selection","path":"sprites/spr_selection/spr_selection.yy",},},
     {"id":{"name":"Sprite3","path":"sprites/Sprite3/Sprite3.yy",},},
   ],
   "resourceType":"GMProject",
