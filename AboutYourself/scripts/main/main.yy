@@ -6,7 +6,7 @@
   "name":"main",
   "parent":{
     "name":"Scripts",
-    "path":"folders/Jessie/Scripts.yy",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,99 +1,97 @@
 switch(combatState){
+	
+	#region Initiation
     case state.init:  
 	
-        //Posicionamento de inimigos
+        #region Positions
         for (var i = 0; i < eAmount; i++) {
-            enemy[i] = instance_create_layer(100, 32 * i, "Enemies", obj_enemy); //Cria os inimigos e os separa por array
-            array_push(enemies, enemy[i]); //Adiciona os em uma lista de inimigos usada para INICIATIVA.
+            enemy[i] = instance_create_layer(enemyX, (enemyY - GAP * (eAmount - 1)) + (GAP * 2 * i),
+			"Enemies", obj_enemy
+			);
         }
 
-        //Posicionamento de aliados
 		for (var i = 0; i < partyNumber; i++) {
 		    global.PartyMembers[i].x = allyX;
 		    global.PartyMembers[i].y = (allyY - GAP * (partyNumber - 1)) + (GAP * 2 * i);
 		}
 
-		// Vai pro turno do player
+		#endregion
         combatState = state.playerturn; 
-    break;
+		
+    break; #endregion
 
+	#region Player's Turn
     case state.playerturn:  
-		
-		//Se o contador de qm eh o turno for maior q o numero de aliados ele reseta e vai pros oponentes
-        if (turnCount >= partyNumber){
-            turnCount = 0;
-            combatState = state.wait;
-			alarm[0] = 60;
-        }
-		
-        //Todo novo ciclo ele atualiza pra poder verificar depois caso haja alteração
-        var _turnCountTemp = turnCount
-        if keyboard_check_pressed(vk_enter){
-            turnCount++;
-        }
-		
-        if _turnCountTemp != turnCount{
-            //Anuncia o turno (por debug msm)
-            //show_debug_message("Ally turn " + string(turnCount)); --> Turno 3 = passe a vez
-            //Dá ao turno um dono
-            turnOwner = global.PartyMembers[turnCount-1]; 
-            //Eu n sei como fazer mas amaria q ele n definisse o owner toda hr por otimização
-            //Supostamente resolvido mas agr ele n executa avisando no primeiro turno exclusivamente
-        }
-
-
-    break;
-
-    case state.wait: 
-	
-	if alarm[0] < 0 {
-	combatState = state.check;
-	alarm[0] = 60 
-	}
-	
-    break;
-
-    case state.check: 
-		//Se n tiver inimigo dá a vitória
-		if array_length(enemies) <= 0{
-			combatState = state.win
-		} else //Se não...
-		{
-			combatState = state.enemyturn
+        //TurnCicles
+		if keyboard_check_pressed(confirmKey){
+		    turnOwner = global.PartyMembers[turnCount];
+		    turnCount++;
+		//TurnReset
+			if (turnCount >= partyNumber){
+	            turnCount = 0;
+	            combatState = state.check;
+				waitNext = state.enemyturn;
+				alarm[0] = 60;
+			}
 		}
-		
-    break;
+    break; #endregion
 
+	#region Check
+    case state.check: 
+		#region Battle Ending Contidion Check
+			//There's no enemies left
+			if array_length(enemy) == 0
+			{
+				checkNext = state.win;
+			} 
+			//There's no allies left
+			else if 0 == 1 //Idk how to condicionate to a player lost
+			{
+				checkNext = state.gameover;
+			} 
+			else // The battle continues
+			{
+				checkNext = state.wait;
+			} 
+		#endregion
+		combatState = checkNext;
+    break; #endregion
+
+	#region Wait
+    case state.wait: 
+		//Pauses
+		if alarm[0] <= 0 {
+			combatState = waitNext;
+			alarm[0] = 60 
+		}
+    break; #endregion
+
+	#region Enemy's Turn
     case state.enemyturn:  
-    
-		//Conta se ja passou por todos os oponentes e da o turno ao player
-        if (turnCount >= array_length(enemies)){
-            turnCount = 0;
-            combatState = state.playerturn;
-        }
 		
-        var _eTurnCountTemp = turnCount
-        if keyboard_check_pressed(vk_enter){
-            turnCount++;
-        }
-		
-        if _eTurnCountTemp != turnCount{
-            //Dá ao turno um dono
-            turnOwner = enemies[turnCount-1]; 
-			Attack(turnOwner, global.PartyMembers[irandom_range(0, (partyNumber-1))]) //Sorteia um party member e bate nele
-			//show_message("atacou")
-        }
-	
-    break;
+		//TurnCicles (Enemy)
+		if keyboard_check_pressed(confirmKey){
+		    turnOwner = enemy[turnCount];
+		    turnCount++;
+			Attack(turnOwner, global.PartyMembers[irandom_range(0, (partyNumber-1))])
+		//TurnReset (Enemy)
+			if (turnCount >= eAmount){
+	            turnCount = 0;
+	            combatState = state.check;
+				waitNext = state.playerturn;
+			}
+		}
+    break; #endregion
 
+	#region Battle's Ending
     case state.win:  
-		//ganhou = legal, faz dnv
+		//Win consequence
 		game_restart();
 
     break;
 
     case state.gameover:  
-		//major skill issue
+		//Game over consequence
 		game_end();
-    break;
+    break; #endregion
 }

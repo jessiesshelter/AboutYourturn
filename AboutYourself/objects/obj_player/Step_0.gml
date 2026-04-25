@@ -1,0 +1,1 @@
+image_alpha = (HP/10)*1

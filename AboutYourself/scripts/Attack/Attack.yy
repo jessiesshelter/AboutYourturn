@@ -6,7 +6,7 @@
   "name":"Attack",
   "parent":{
     "name":"EnemyAttacks",
-    "path":"folders/Jessie/Scripts/EnemyAttacks.yy",
+    "path":"folders/Scripts/EnemyAttacks.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,2 +1,2 @@
-ATK = 1
+ATK = irandom_range(1,10)
 HP = 10

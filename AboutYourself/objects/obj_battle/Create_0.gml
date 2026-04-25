@@ -1,23 +1,25 @@
 //Batalha
 enum state{
-    init, //Carrega os dados do combate 0
-    playerturn, //Escolhas do player 1
-    playerexecution, //Consequências das escolahs 2
-    wait, //Pausa 3
-    check, //Checa se a batalha acabaria 4
-    enemyturn, //IA dos inimigos
-    enemyexecution, //Turno de esquiva caso possível
-    win, //Caso ganhe a luta
-    gameover //Caso perca a luta
+    init, //Start
+    playerturn, //Player's Choices
+    playerexecution, //Player Strikes
+    wait, //Pauses
+    check, //Check for an end
+    enemyturn, //Enemy's Choices
+    enemyexecution, //Enemy Strikes
+    win, //End the fight with a win
+    gameover //Make the game over
 }
 
 combatState = state.init;
-enemies = [];
 enemy = [];
 eAmount = 2
 turnCount = 0;
 turnOwner = noone;
 turnTarget = noone;
+
+waitNext = state.enemyturn;
+checkNext = state.wait;
 
 //Party
 for(var i = 0; i < instance_number(obj_player); i++){
@@ -26,12 +28,14 @@ for(var i = 0; i < instance_number(obj_player); i++){
 
 partyNumber = array_length(global.PartyMembers)
 
-//Keybinding (temporario)
-confirmKey = keyboard_check_pressed(vk_enter)
+//Keybindings
+confirmKey = vk_enter;
 
-//Posições
+//Positions
 allyX = room_width/3;
 allyY = room_height/2;
+enemyX = room_width/3 * 2;
+enemyY = room_height/2;
 
 #macro GAP 32
 
