@@ -19,9 +19,11 @@ switch(combatState){
         //Todo novo ciclo ele atualiza pra poder verificar depois caso haja alteração
         var _turnCountTemp = turnCount
         
-        if (confirmKey){
+		//if keyboard_check_pressed(vk_enter) {show_debug_message("AERTOU")}
+        if keyboard_check_pressed(vk_enter){
             turnCount++;
         }
+		
 
         if _turnCountTemp != turnCount{
             //Anuncia o turno (por debug msm)
@@ -34,15 +36,22 @@ switch(combatState){
         
         //Se o contador de qm eh o turno for maior q o numero de aliados ele reseta e vai pros oponentes
         // ele tem +1 pq ele começa no 0
-        if (turnCount+1 > array_length(global.PartyMembers)){
+        if (turnCount+2 > array_length(global.PartyMembers)){
             turnCount = 0;
             combatState = state.wait;
+			alarm[0] = 300;
         }
 
     break;
 
-    case state.wait:  
-    
+    case state.wait: 
+	
+	show_debug_message(alarm_get(0))
+	if alarm[0] < 0 {
+	combatState = state.check;
+	alarm[0] = 300 
+	}
+	
     break;
 
     case state.check:  
