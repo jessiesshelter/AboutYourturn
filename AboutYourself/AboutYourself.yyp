@@ -36,6 +36,7 @@
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
     {"id":{"name":"Attack","path":"scripts/Attack/Attack.yy",},},
     {"id":{"name":"main","path":"scripts/main/main.yy",},},
+    {"id":{"name":"spr_chatgpt","path":"sprites/spr_chatgpt/spr_chatgpt.yy",},},
     {"id":{"name":"spr_hate","path":"sprites/spr_hate/spr_hate.yy",},},
     {"id":{"name":"spr_kris","path":"sprites/spr_kris/spr_kris.yy",},},
     {"id":{"name":"spr_omori","path":"sprites/spr_omori/spr_omori.yy",},},

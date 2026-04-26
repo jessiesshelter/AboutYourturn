@@ -7,6 +7,7 @@ target = noone;
 
 options = ["Fight","Skills","Itens","Run"];
 optionsNum = array_length(options);
+enemyNum = array_length(obj_battle.enemy);
 menuState = mState.playerchoices
 Selection = 0;
 
