@@ -86,12 +86,14 @@ switch(combatState){
 	#region Battle's Ending
     case state.win:  
 		//Win consequence
+
 		game_restart();
 
     break;
 
     case state.gameover:  
 		//Game over consequence
+	
 		game_end();
     break; #endregion
 }
