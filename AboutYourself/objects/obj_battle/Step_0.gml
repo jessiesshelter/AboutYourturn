@@ -23,6 +23,7 @@ switch(combatState){
 	#region Player's Turn
     case state.playerturn: 
 			
+			
 		//TurnReset
 			if (turnCount >= partyNumber){
 	            turnCount = 0;

@@ -29,9 +29,8 @@ if (obj_battle.combatState == state.playerturn){
 		#region Targets
 	
 		case mState.targets:
-			draw_sprite(spr_selection,0,
-				obj_battle.enemy[Selection].x, obj_battle.enemy[Selection].y - 24
-			);
+			
+			draw_sprite(spr_selection,0,obj_battle.enemy[Selection].x, obj_battle.enemy[Selection].y - 24);
 	
 		break; #endregion
 	}
