@@ -13,7 +13,7 @@ switch(menuState){
 	switch(Selection){
 		case 0: //FIGHT
 			if keyboard_check_pressed(global.keys.confirm){
-				enemyNum = array_length(obj_battle.enemy); //POR FAVOR COLOCA ISSO EM SKILLS TAMBEM PARA ATUALIZAR O ARRAY! Com amor, Giovani <3
+				enemyNum = array_length(obj_battle.enemy);
 				menuState = mState.targets;
 				Selection = 0;
 				
@@ -23,7 +23,7 @@ switch(menuState){
 		break;
 	
 		case 1: //SKILLS
-		
+			//enemyNum = array_length(obj_battle.enemy);
 	
 		break;
 	

@@ -58,6 +58,22 @@ switch(combatState){
 				checkNext = state.wait;
 			} 
 		#endregion
+
+		#region Check Downed Enemies and Allies
+			for (var i = 0; i < array_length(enemy); i++){
+				if enemy[i] <= 0{
+					instance_destroy(enemy[i])
+					//Idk if this also removes the object from its array
+				}
+			}
+
+			for (var i = 0; i < array_length(global.PartyMembers); i++){
+				if global.PartyMembers[i] <= 0{
+					instance_destroy(global.PartyMembers[i])
+				}
+			}
+
+
 		combatState = checkNext;
     break; #endregion
 
@@ -82,7 +98,10 @@ switch(combatState){
 		} else {
 		    var _turnOwner = enemy[turnCount];
 		    turnCount++;
-			Attack(_turnOwner, global.PartyMembers[irandom_range(0, (partyNumber-1))]);
+			script_execute(enemy[turnCount].AIBehavior, //Script
+				_turnOwner, //Attacker
+				global.PartyMembers[irandom_range(0,array_length(global.PartyMembers))] //Target
+			);
 		}
 		
     break; #endregion
