@@ -24,6 +24,10 @@ switch(combatState){
     case state.playerturn: 
 			
 			
+		if keyboard_check_pressed(global.keys.cancel) && turnCount > 0{
+			turnCount--
+		}
+
 		//TurnReset
 			if (turnCount >= partyNumber){
 	            turnCount = 0;
