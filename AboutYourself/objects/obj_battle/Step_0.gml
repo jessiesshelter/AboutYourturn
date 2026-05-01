@@ -33,22 +33,19 @@ switch(combatState){
 				alarm[0] = 60;
 			}
 			
-<<<<<<< Updated upstream
-=======
 		//Checks if the ally is down
 			if global.PartyMembers[turnCount].ALIVE != true{
 				turnCount++;
 			}
 			
->>>>>>> Stashed changes
 		obj_battlemenu.target = global.PartyMembers[turnCount]; //BRO MY PC-C-C-C
     break; #endregion
 
 	#region Check
     case state.check: 
-<<<<<<< Updated upstream
+
 		#region Battle Ending Contidion Check
-=======
+
 	
 		for (var i = 0; i < array_length(enemy)-1; ++i) {
 		    
@@ -68,7 +65,7 @@ switch(combatState){
 		}
 		
 		
->>>>>>> Stashed changes
+
 			//There's no enemies left
 			if array_length(enemy) == 0
 			{
@@ -106,15 +103,14 @@ switch(combatState){
 	        combatState = state.check;
 			waitNext = state.playerturn;
 		} else {
-<<<<<<< Updated upstream
-=======
+
 		
 			//
 			if enemy[turnCount] == 0{
 				turnCount++
 			}
 			
->>>>>>> Stashed changes
+
 		    var _turnOwner = enemy[turnCount];
 		    turnCount++;
 			Attack(_turnOwner, global.PartyMembers[irandom_range(0, (partyNumber-1))]);
