@@ -35,8 +35,8 @@
     {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
+    {"id":{"name":"rm_overworld","path":"rooms/rm_overworld/rm_overworld.yy",},},
     {"id":{"name":"Attack","path":"scripts/Attack/Attack.yy",},},
-    {"id":{"name":"cleanenemies","path":"scripts/cleanenemies/cleanenemies.yy",},},
     {"id":{"name":"loop","path":"scripts/loop/loop.yy",},},
     {"id":{"name":"main","path":"scripts/main/main.yy",},},
     {"id":{"name":"spr_chatgpt","path":"sprites/spr_chatgpt/spr_chatgpt.yy",},},
@@ -49,6 +49,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_overworld","path":"rooms/rm_overworld/rm_overworld.yy",},},
     {"roomId":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
   ],
   "templateType":"game",
