@@ -8,7 +8,7 @@ switch(menuState){
 	case mState.playerchoices: //Player's Options
 
 	//Looping options
-	loop(optionsNum);
+	Loop(optionsNum);
 
 	switch(Selection){
 		case 0: //FIGHT
@@ -39,7 +39,7 @@ switch(menuState){
 	case mState.targets: //Chosing targets
 		
 	//Looping targets
-	loop(enemyNum);
+	Loop(enemyNum);
 		
 		if keyboard_check_pressed(global.keys.confirm){
 				menuState = mState.playerchoices;

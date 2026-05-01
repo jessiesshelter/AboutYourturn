@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_kris",
-    "path":"sprites/spr_kris/spr_kris.yy",
+    "name":"spr_krisDown",
+    "path":"sprites/spr_krisDown/spr_krisDown.yy",
   },
   "spriteMaskId":null,
   "visible":true,

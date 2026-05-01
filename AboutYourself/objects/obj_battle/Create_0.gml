@@ -33,5 +33,5 @@ allyY = room_height/2;
 enemyX = room_width/3 * 2;
 enemyY = room_height/2;
 
-#macro GAP 32
+#macro Enemy_Y_GAP 32
 

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"Loop",
+  "%Name":"GetPartyMemberRandom",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Loop",
+  "name":"GetPartyMemberRandom",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

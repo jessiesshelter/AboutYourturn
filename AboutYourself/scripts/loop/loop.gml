@@ -1,4 +1,4 @@
-function loop(tipo){
+function Loop(tipo){
 	if Selection > tipo-1{
 			Selection = 0;
 		}

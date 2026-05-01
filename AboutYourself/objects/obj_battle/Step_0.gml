@@ -5,14 +5,14 @@ switch(combatState){
 	
         #region Positions
         for (var i = 0; i < eAmount; i++) {
-            enemy[i] = instance_create_layer(enemyX, (enemyY - GAP * (eAmount - 1)) + (GAP * 2 * i),
+            enemy[i] = instance_create_layer(enemyX, GetYPosition(enemyY,Enemy_Y_GAP,eAmount,i),
 			"Enemies", obj_enemy
 			);
         }
 
 		for (var i = 0; i < partyNumber; i++) {
 		    global.PartyMembers[i].x = allyX;
-		    global.PartyMembers[i].y = (allyY - GAP * (partyNumber - 1)) + (GAP * 2 * i);
+		    global.PartyMembers[i].y = GetYPosition(allyY,Enemy_Y_GAP,partyNumber,i);
 		}
 
 		#endregion
@@ -26,6 +26,7 @@ switch(combatState){
 		if keyboard_check_pressed(global.keys.cancel) && turnCount > 0{
 			turnCount--
 		}
+		
 
 		//TurnReset
 			if (turnCount >= partyNumber){
@@ -33,15 +34,19 @@ switch(combatState){
 	            combatState = state.check;
 				waitNext = state.enemyturn;
 				obj_battlemenu.target = noone;
-				alarm[0] = 60;
+				alarm[0] = 30;
 			}
-			
+		
 		//Checks if the ally is down
-			if global.PartyMembers[turnCount].HP <= 0{
+			var member = global.PartyMembers[turnCount]
+		
+			if member.HP <= 0{
 				turnCount++;
+				break;
 			}
-			
-		obj_battlemenu.target = global.PartyMembers[turnCount]; //BRO MY PC-C-C-C
+		
+			obj_battlemenu.target = member; //BRO MY PC-C-C-C
+				
     break; #endregion
 
 	#region Check
@@ -52,10 +57,11 @@ switch(combatState){
 				checkNext = state.win;
 			} 
 			//There's no allies left
-			else if 0 == 1 //Idk how to condicionate to a player lost
-			{
-				checkNext = state.gameover;
-			} 
+			var _alive = 0;
+			for (var i = 0; i < array_length(global.PartyMembers); ++i) {
+				if global.PartyMembers[i].HP > 0{	_alive++	}
+			}
+			if _alive == 0{	checkNext = state.gameover	}
 			else // The battle continues
 			{
 				checkNext = state.wait;
@@ -70,7 +76,7 @@ switch(combatState){
 		//Pauses
 		if alarm[0] <= 0 {
 			combatState = waitNext;
-			alarm[0] = 60 
+			alarm[0] = 30 
 		}
     break; #endregion
 
@@ -84,16 +90,14 @@ switch(combatState){
 			waitNext = state.playerturn;
 		} else {
 			
-			//
+			// Checks Enemy Down
 			if enemy[turnCount].HP <= 0{
 				turnCount++
+				break;
 			}
 			
 		    var _turnOwner = enemy[turnCount];
-			script_execute(enemy[turnCount].AIBehavior, //Script
-				_turnOwner, //Attacker
-				global.PartyMembers[irandom_range(0,array_length(global.PartyMembers)-1)] //Target
-			);
+			enemy[turnCount].AIBehavior(_turnOwner, GetPartyMemberRandom(array_length(global.PartyMembers)-1)); //Script
 		    turnCount++; //Let this be the last thing :D
 		}
 		
@@ -103,14 +107,13 @@ switch(combatState){
 	#region Battle's Ending
     case state.win:  
 		//Win consequence
-
 		game_restart();
 
     break;
 
     case state.gameover:  
 		//Game over consequence
-	
 		game_end();
+		
     break; #endregion
 }

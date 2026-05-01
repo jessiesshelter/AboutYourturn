@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"Loop",
+  "%Name":"GetYPosition",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Loop",
+  "name":"GetYPosition",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",
