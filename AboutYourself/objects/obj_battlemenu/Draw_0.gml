@@ -22,6 +22,8 @@ if (obj_battle.combatState == state.playerturn){
 					} else {	draw_set_colour(c_white);	};
 			
 				draw_text(target.x + OFFSET_X, target.y + OFFSET_Y + B_GAP * i, options[i]);
+				
+				
 			}
 		}
 		break; #endregion

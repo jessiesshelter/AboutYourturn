@@ -23,7 +23,6 @@ switch(combatState){
 	#region Player's Turn
     case state.playerturn: 
 			
-			
 		if keyboard_check_pressed(global.keys.cancel) && turnCount > 0{
 			turnCount--
 		}
@@ -37,12 +36,16 @@ switch(combatState){
 				alarm[0] = 60;
 			}
 			
+		//Checks if the ally is down
+			if global.PartyMembers[turnCount].HP <= 0{
+				turnCount++;
+			}
+			
 		obj_battlemenu.target = global.PartyMembers[turnCount]; //BRO MY PC-C-C-C
     break; #endregion
 
 	#region Check
     case state.check: 
-		#region Battle Ending Contidion Check
 			//There's no enemies left
 			if array_length(enemy) == 0
 			{
@@ -57,24 +60,9 @@ switch(combatState){
 			{
 				checkNext = state.wait;
 			} 
-		#endregion
-
-		#region Check Downed Enemies and Allies
-			for (var i = 0; i < array_length(enemy); i++){
-				if enemy[i] <= 0{
-					instance_destroy(enemy[i])
-					//Idk if this also removes the object from its array
-				}
-			}
-
-			for (var i = 0; i < array_length(global.PartyMembers); i++){
-				if global.PartyMembers[i] <= 0{
-					instance_destroy(global.PartyMembers[i])
-				}
-			}
-
 
 		combatState = checkNext;
+	
     break; #endregion
 
 	#region Wait
@@ -88,7 +76,6 @@ switch(combatState){
 
 	#region Enemy's Turn
     case state.enemyturn:  
-		
 	
 	//TurnReset (Enemy)
 		if (turnCount >= eAmount){
@@ -96,13 +83,20 @@ switch(combatState){
 	        combatState = state.check;
 			waitNext = state.playerturn;
 		} else {
+			
+			//
+			if enemy[turnCount].HP <= 0{
+				turnCount++
+			}
+			
 		    var _turnOwner = enemy[turnCount];
-		    turnCount++;
 			script_execute(enemy[turnCount].AIBehavior, //Script
 				_turnOwner, //Attacker
-				global.PartyMembers[irandom_range(0,array_length(global.PartyMembers))] //Target
+				global.PartyMembers[irandom_range(0,array_length(global.PartyMembers)-1)] //Target
 			);
+		    turnCount++; //Let this be the last thing :D
 		}
+		
 		
     break; #endregion
 
