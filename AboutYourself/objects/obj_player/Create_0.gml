@@ -1,5 +1,6 @@
 ATK = 6
 HP = 10
+ALIVE = true;
 
 // Sistema de Aceleração e andar
 
